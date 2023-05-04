@@ -1,0 +1,92 @@
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+        crossorigin="anonymous">
+        <title>News</title>
+        
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
+        crossorigin="anonymous"
+        defer></script>
+    <script 
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+        crossorigin="anonymous"
+        defer></script>
+    <script 
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+        crossorigin="anonymous"
+        defer></script>
+    <style>
+        body {min-height: 100vh; display: flex; flex-direction: column;}
+        body > main {flex: 1;}
+        footer {
+            background-color: #343a40;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: .5rem 1rem;
+        }
+        footer p, footer a {
+            position: relative;
+            text-decoration: none;
+            margin: 0;
+            color: rgba(255, 255, 255, .5);
+            transition: .3s color;
+        }
+        footer p:hover, footer a:hover {
+            text-decoration: none;
+            color: rgba(255, 255, 255, .75);
+        }
+
+        footer a::after {
+            display: block;
+            position: absolute;
+            content: "";
+            width: 0;
+            height: .1rem;
+            background-color: whitesmoke;
+            transition: .2s width;
+        }
+        footer > right a::after {
+            right: 0;
+        }
+        footer a:hover:after {
+            width: 100%;
+        }
+    </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">My Site</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                data-target="#navbarNav" aria-controls="navbarNav" aria-
+                expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">News</a>
+                    </li>
+                </ul>
+        </div>
+        </nav>
+
+        <main role="main" class="container">
+            <h1>{% block title %}My amazing news site{% endblock %}</h1>
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer>
+            {% include 'news_blog/about.html' %}
+        </footer>
+    </body>
+</html>
