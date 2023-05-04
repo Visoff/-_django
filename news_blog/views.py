@@ -16,6 +16,7 @@ articles = [
 
 # Create your views here.
 def index(req):
+    #return render(req, "news_blog/index.html", {"articles":articles})
     return render(req, "news_blog/news_list.html", {"articles":articles})
 
 def get_by_id(req, id):
